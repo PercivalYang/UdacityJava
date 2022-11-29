@@ -39,6 +39,6 @@ public class Room implements IRoom {
         } else if (getRoomType().equals(RoomType.DOUBLE)) {
             roomType = "Double";
         }
-        return "Number: " + roomNumber + " Price: " + roomPrice + " Type: " + roomType;
+        return "Number: " + roomNumber + "\n  \\_Price: " + roomPrice + "\n  \\_Type: " + roomType;
     }
 }

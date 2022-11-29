@@ -14,7 +14,7 @@ public class FreeRoom extends Room {
         } else if (getRoomType().equals(RoomType.DOUBLE)) {
             roomType = "Double";
         }
-        return "Number: " + getRoomNumber() + " Type: " + roomType + " Free!!";
+        return "Number: " + getRoomNumber() + "\n  \\_Type: " + roomType + "\n  \\_Price: Free!!";
     }
 
     public static void main(String[] args) {

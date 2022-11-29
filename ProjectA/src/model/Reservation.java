@@ -1,5 +1,6 @@
 package model;
 
+import javax.swing.plaf.PanelUI;
 import java.util.Date;
 
 public class Reservation {
@@ -15,6 +16,25 @@ public class Reservation {
         this.checkOutDate = checkOutDate;
     }
 
+    public IRoom getRoom(){
+        return room;
+    }
+    public Customer getCustomer(){
+        return customer;
+    }
+    public Date getCheckInDate(){
+        return checkInDate;
+    }
+    public Date getCheckOutDate(){
+        return checkOutDate;
+    }
+
+    public boolean checkFree(Date cInDate, Date cOutDate){
+        if (cInDate.after(checkOutDate) || cOutDate.before(checkInDate)){
+            return true;
+        }
+        return false;
+    }
     @Override
     public String toString() {
         return "Customer: " + customer.getName() +

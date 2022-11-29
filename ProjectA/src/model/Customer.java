@@ -22,10 +22,13 @@ public class Customer {
         this.lastName = lastName;
         this.email = email;
     }
+    public String getEmail(){
+        return email;
+    }
 
     @Override
     public String toString(){
-        return "Name: " + firstName + " " + lastName + "\nemail: " + email;
+        return "Name: " + firstName + " " + lastName + "\n  \\_email: " + email;
     }
 
 }
