@@ -1,4 +1,5 @@
 package DesignPatternExercise;
+import java.awt.image.BufferedImageFilter;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.Instant;
@@ -6,16 +7,16 @@ import java.time.ZoneId;
 import java.util.Objects;
 
 public final class UdacisearchClient implements Serializable {
-  private String name = "";
-  private long id = 0;
-  private int quarterlyBudget = 0;
-  private int numEmployees = 0;
-  private Instant contractStart = Instant.EPOCH;
-  private Duration contractLength = Duration.ZERO;
-  private ZoneId timeZone = ZoneId.of("UTC");
-  private String billingAddress = "";
+  private final String name;
+  private final long id;
+  private final int quarterlyBudget;
+  private final int numEmployees;
+  private final Instant contractStart;
+  private final Duration contractLength;
+  private final ZoneId timeZone;
+  private final String billingAddress;
 
-  public UdacisearchClient(
+  private UdacisearchClient(
       String name,
       long id,
       int quarterlyBudget,
@@ -34,68 +35,91 @@ public final class UdacisearchClient implements Serializable {
     this.billingAddress = billingAddress;
   }
 
-  public String getName() {
-    return name;
+  public static final class Builder{
+    private String name = "";
+    private long id = 0;
+    private int quarterlyBudget = 0;
+    private int numEmployees = 0;
+    private Instant contractStart = Instant.EPOCH;
+    private Duration contractLength = Duration.ZERO;
+    private ZoneId timeZone = ZoneId.of("Etc/UTC");
+    private String billingAddress = "";
+
+    public UdacisearchClient build(){
+      return new UdacisearchClient(name,id,quarterlyBudget,numEmployees,contractStart,contractLength,
+              timeZone,billingAddress);
+    }
+    public Builder setName(String name) {
+      this.name = name;
+      return this;
+    }
+
+    public Builder setId(long id) {
+      this.id = id;
+      return this;
+    }
+
+    public Builder setQuarterlyBudget(int quarterlyBudget) {
+      this.quarterlyBudget = quarterlyBudget;
+      return this;
+    }
+
+    public Builder setNumEmployees(int numEmployees) {
+      this.numEmployees = numEmployees;
+      return this;
+    }
+
+    public Builder setContractStart(Instant contractStart) {
+      this.contractStart = contractStart;
+      return this;
+    }
+
+    public Builder setContractLength(Duration contractLength) {
+      this.contractLength = contractLength;
+      return this;
+    }
+
+    public Builder setTimeZone(ZoneId timeZone) {
+      this.timeZone = timeZone;
+      return this;
+    }
+
+    public Builder setBillingAddress(String billingAddress) {
+      this.billingAddress = billingAddress;
+      return this;
+    }
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public String getName() {
+    return name;
   }
 
   public long getId() {
     return id;
   }
 
-  public void setId(long id) {
-    this.id = id;
-  }
-
   public int getQuarterlyBudget() {
     return quarterlyBudget;
-  }
-
-  public void setQuarterlyBudget(int quarterlyBudget) {
-    this.quarterlyBudget = quarterlyBudget;
   }
 
   public int getNumEmployees() {
     return numEmployees;
   }
 
-  public void setNumEmployees(int numEmployees) {
-    this.numEmployees = numEmployees;
-  }
-
   public Instant getContractStart() {
     return contractStart;
-  }
-
-  public void setContractStart(Instant contractStart) {
-    this.contractStart = contractStart;
   }
 
   public Duration getContractLength() {
     return contractLength;
   }
 
-  public void setContractLength(Duration contractLength) {
-    this.contractLength = contractLength;
-  }
-
   public ZoneId getTimeZone() {
     return timeZone;
   }
 
-  public void setTimeZone(ZoneId timeZone) {
-    this.timeZone = timeZone;
-  }
-
   public String getBillingAddress() {
     return billingAddress;
-  }
-
-  public void setBillingAddress(String billingAddress) {
-    this.billingAddress = billingAddress;
   }
 
   @Override
